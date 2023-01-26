@@ -5,7 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73991ba7-0aad-49bb-bed1-2c2d94a6e680" name="Changes" comment="initial commit">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/examples/examplegame/ExampleGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/examples/examplegame/ExampleGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/examples/examplegame/ExampleScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/game/Entity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/game/GameTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/game/TickHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/game/TickHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/game/World.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/game/components/Component.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/game/components/NameComponent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/game/systems/NameCallSystem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/game/systems/System.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/Glyph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/Glyph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/LayerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/LayerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/Tileset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/Tileset.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/WindowConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/WindowConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/shader/ShaderManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/shader/ShaderManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/shader/UniformMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/shader/UniformMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/input/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/input/KeyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/input/KeySet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/input/KeySet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/util/ComponentMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/util/EntityCollection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/util/RGBA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/util/RGBA.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674696273468</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="initial commit">
+      <created>1674697146154</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1674697146154</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -6,6 +6,7 @@ public class LayerConfig {
 	public int cellRows = 14;
 	public int cellColumns = 14;
 
+	@SuppressWarnings("unused")
 	public float[] cellVertices = new float[] {
 			0.0f, 600.0f, 0.0f,
 			0.0f, 600.0f - cellSize * scale, 0.0f,
@@ -13,6 +14,7 @@ public class LayerConfig {
 			cellSize * scale, 600.0f, 0.0f,
 	};
 
+	@SuppressWarnings("unused")
 	public float[] uvs = new float[] {
 			0.0f, 0.0f,
 			0.0f, 1.0f / cellSize,
@@ -20,6 +22,7 @@ public class LayerConfig {
 			1.0f / cellSize, 0.0f,
 	};
 
+	@SuppressWarnings("unused")
 	public int[] indices = new int[] {
 			0, 1, 3, 3, 1, 2,
 	};

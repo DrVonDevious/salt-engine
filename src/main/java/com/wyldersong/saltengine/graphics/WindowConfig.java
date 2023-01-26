@@ -12,10 +12,12 @@ public class WindowConfig {
 
 	public WindowConfig() {}
 
+	@SuppressWarnings("unused")
 	public WindowConfig(String title) {
 		this.title = title;
 	}
 
+	@SuppressWarnings("unused")
 	public WindowConfig(String title, int width, int height) {
 		this.title = title;
 		this.width = width;

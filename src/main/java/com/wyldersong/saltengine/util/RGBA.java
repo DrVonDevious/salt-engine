@@ -6,6 +6,7 @@ public class RGBA {
 	public int b = 0;
 	public int a = 255;
 
+	@SuppressWarnings("unused")
 	public RGBA() {
 		validateColorRanges();
 	}

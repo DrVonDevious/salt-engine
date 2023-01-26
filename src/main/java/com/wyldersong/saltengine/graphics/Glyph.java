@@ -7,6 +7,7 @@ public class Glyph {
 		this.id = id;
 	}
 
+	@SuppressWarnings("unused")
 	public Glyph(char character) {
 		this.id = 0;
 		System.out.println(character);

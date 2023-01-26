@@ -5,7 +5,7 @@ import org.lwjgl.glfw.GLFWKeyCallback;
 import static org.lwjgl.glfw.GLFW.*;
 
 public class KeyHandler {
-	private KeySet keySet;
+	private final KeySet keySet;
 
 	public KeyHandler(KeySet keySet) {
 		this.keySet = keySet;

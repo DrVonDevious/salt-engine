@@ -9,6 +9,8 @@ import java.util.Map;
 import static org.lwjgl.opengl.GL20.*;
 
 public class UniformMapper {
+	private UniformMapper() {}
+
 	private static FloatBuffer createFloatBuffer(int size) {
 		try (MemoryStack stack = MemoryStack.stackPush()) {
 			return stack.mallocFloat(size);
@@ -29,7 +31,7 @@ public class UniformMapper {
 	}
 
 	private static int checkUniform(String name, Map<String, Integer> target) {
-		try (MemoryStack stack = MemoryStack.stackPush()) {
+		try (MemoryStack ignored = MemoryStack.stackPush()) {
 			Integer location = target.get(name);
 
 			if (location == null) {
@@ -55,6 +57,7 @@ public class UniformMapper {
 		glUniform2fv(location, buffer);
 	}
 
+	@SuppressWarnings("unused")
 	public static void setUniform(String name, Vector3f value, Map<String, Integer> target) {
 		FloatBuffer buffer = createFloatBuffer(3);
 		value.get(buffer);
@@ -62,6 +65,7 @@ public class UniformMapper {
 		glUniform3fv(location, buffer);
 	}
 
+	@SuppressWarnings("unused")
 	public static void setUniform(String name, Vector4f value, Map<String, Integer> target) {
 		FloatBuffer buffer = createFloatBuffer(4);
 		value.get(buffer);
@@ -69,6 +73,7 @@ public class UniformMapper {
 		glUniform4fv(location, buffer);
 	}
 
+	@SuppressWarnings("unused")
 	public static void setUniform(String name, Matrix2f value, Map<String, Integer> target) {
 		FloatBuffer buffer = createFloatBuffer(4);
 		value.get(buffer);
@@ -76,6 +81,7 @@ public class UniformMapper {
 		glUniformMatrix2fv(location, false, buffer);
 	}
 
+	@SuppressWarnings("unused")
 	public static void setUniform(String name, Matrix3f value, Map<String, Integer> target) {
 		FloatBuffer buffer = createFloatBuffer(9);
 		value.get(buffer);

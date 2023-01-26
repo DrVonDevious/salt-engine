@@ -8,6 +8,7 @@ public class Camera {
 
 	private Matrix4f projection;
 
+	@SuppressWarnings("unused")
 	public Camera() {
 		position = new Vector2f(0, 0);
 	}
@@ -16,9 +17,8 @@ public class Camera {
 		position = new Vector2f(x, y);
 	}
 
-	public Matrix4f setProjection(float originX, float width, float originY, float height) {
+	public void setProjection(float originX, float width, float originY, float height) {
 		projection = new Matrix4f().ortho(originX, width, originY, height, -1.0f, 1.0f);
-		return projection;
 	}
 
 	public Matrix4f getProjection() {

@@ -7,6 +7,7 @@ public class TickHandler {
 	private float frameCount;
 	private int fps;
 	private int fpsCount;
+
 	private int ups;
 	private int upsCount;
 
@@ -35,8 +36,14 @@ public class TickHandler {
 		this.upsCount++;
 	}
 
+	@SuppressWarnings("unused")
 	public int getFPS() {
 		return fps > 0 ? fps : fpsCount;
+	}
+
+	@SuppressWarnings("unused")
+	public int getUPS() {
+		return ups > 0 ? ups : upsCount;
 	}
 
 	public void tick() {

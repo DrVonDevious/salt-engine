@@ -11,7 +11,7 @@ import static org.lwjgl.stb.STBImage.*;
 
 public class Tileset {
 	public int id;
-	private String filepath;
+	private final String filepath;
 
 	public Tileset(String filepath) {
 		this.filepath = filepath;
@@ -49,6 +49,7 @@ public class Tileset {
 		glBindTexture(GL_TEXTURE_2D, id);
 	}
 
+	@SuppressWarnings("unused")
 	public void delete() {
 		glDeleteTextures(id);
 	}

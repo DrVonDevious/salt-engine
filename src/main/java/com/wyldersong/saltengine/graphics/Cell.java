@@ -28,8 +28,7 @@ public class Cell {
 	public boolean isInitialized = false;
 
 	private int vao;
-	private List<Integer> vbos;
-	private float[] vertices = new float[] {
+	private final float[] vertices = new float[] {
 		0.0f, 600.0f, 0.0f,
 		0.0f, 600.0f - cellSize * scale, 0.0f,
 		cellSize * scale, 600.0f - cellSize * scale, 0.0f,
@@ -44,7 +43,7 @@ public class Cell {
 	};
 
 
-	private float[] uvs = new float[] {
+	private final float[] uvs = new float[] {
 		0.0f, 0.0f,
 		0.0f, 1.0f / cellSize,
 		1.0f / cellSize, 1.0f  / cellSize,
@@ -57,12 +56,14 @@ public class Cell {
 
 	public Cell() {}
 
+	@SuppressWarnings("unused")
 	public Cell(int x, int y) {
 		position = new Vector2i(x, y);
 		glyph = new Glyph(1);
 		init();
 	}
 
+	@SuppressWarnings("unused")
 	public Cell(int x, int y, RGBA bg) {
 		position = new Vector2i(x, y);
 		backgroundColor = bg;
@@ -81,7 +82,7 @@ public class Cell {
 		isInitialized = true;
 
 		try (MemoryStack stack = MemoryStack.stackPush()) {
-			vbos = new ArrayList<>();
+			List<Integer> vbos = new ArrayList<>();
 
 			vao = glGenVertexArrays();
 			glBindVertexArray(vao);

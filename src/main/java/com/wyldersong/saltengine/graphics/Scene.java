@@ -3,11 +3,6 @@ package com.wyldersong.saltengine.graphics;
 import com.wyldersong.saltengine.graphics.shader.Shader;
 import com.wyldersong.saltengine.graphics.shader.ShaderManager;
 import com.wyldersong.saltengine.graphics.shader.UniformMapper;
-import com.wyldersong.saltengine.util.RGBA;
-import org.joml.Matrix2f;
-import org.joml.Matrix4f;
-import org.joml.Vector2f;
-import org.joml.Vector3f;
 import org.lwjgl.system.MemoryUtil;
 
 import java.nio.FloatBuffer;
@@ -21,6 +16,7 @@ import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 public class Scene {
 	private List<Layer> layers;
 	private ShaderManager shaderManager;
+
 	private Window window;
 	private int vao;
 	private int vbo;

@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.lwjgl.opengl.GL20.*;
-import static org.lwjgl.opengl.GL30.glBindFragDataLocation;
 
 public class ShaderManager {
 	public int programId;
@@ -23,7 +22,7 @@ public class ShaderManager {
 		uniforms = new HashMap<>();
 	}
 
-	public Shader createShader(int shaderType, String filepath) {
+	public void createShader(int shaderType, String filepath) {
 		Shader shader = new Shader(shaderType);
 		shader.setSource(loadShaderFile(filepath));
 		shader.compile();
@@ -33,8 +32,6 @@ public class ShaderManager {
 		} else {
 			fragmentShader = shader;
 		}
-
-		return shader;
 	}
 
 	public void createUniforms() {
@@ -50,7 +47,7 @@ public class ShaderManager {
 
 		try (
 			InputStream inputStream = new FileInputStream(filepath);
-			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))
 		) {
 			String line;
 
@@ -83,28 +80,10 @@ public class ShaderManager {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	public void delete() {
 		glDeleteProgram(programId);
 	}
-
-	public void bindLocation(int index, CharSequence name) {
-		glBindFragDataLocation(programId, index, name);
-	}
-
-	public void setAttributeLocation(int location, int size, int step, int offset) {
-		glEnableVertexAttribArray(location);
-		glVertexAttribPointer(location, size, GL_FLOAT, false, step, offset);
-	}
-
-	public int getAttributeLocation(CharSequence name) {
-		return glGetAttribLocation(programId, name);
-	}
-
-	public void enableVertexAttribute(int location) {}
-
-	public void disableVertexAttribute(int location) {}
-
-	public void getUniformLocation(CharSequence name) {}
 
 	public void bind() {
 		glUseProgram(programId);

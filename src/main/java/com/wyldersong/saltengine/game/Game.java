@@ -18,8 +18,10 @@ public class Game {
 	private Scene activeScene;
 	private boolean isRunning = false;
 
+	@SuppressWarnings("unused")
 	public Game() {}
 
+	@SuppressWarnings("unused")
 	public Game(GameConfig config) {
 		this.config = config;
 		keyHandler = new KeyHandler(config.keys);
@@ -83,8 +85,9 @@ public class Game {
 		tickHandler.updateFPS();
 	}
 
-	public void cleanup() {}
+	public void cleanup() { /* TODO document why this method is empty */ }
 
+	@SuppressWarnings("unused")
 	public void exit() {
 		isRunning = false;
 	}

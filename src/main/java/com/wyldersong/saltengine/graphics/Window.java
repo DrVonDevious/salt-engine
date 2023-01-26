@@ -13,11 +13,12 @@ import static org.lwjgl.system.MemoryStack.stackPush;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Window {
-	public int width, height;
+	public int width;
+	public int height;
 
-	private KeyHandler keyHandler;
-	private WindowConfig config;
-	private long window;
+	private final KeyHandler keyHandler;
+	private final WindowConfig config;
+	private long glfwWindow;
 
 	public Window(WindowConfig config, KeyHandler keyHandler) {
 		this.config = config;
@@ -37,19 +38,19 @@ public class Window {
 		glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
 
 		try {
-			this.window = glfwCreateWindow(config.width, config.height, config.title, NULL, NULL);
+			this.glfwWindow = glfwCreateWindow(config.width, config.height, config.title, NULL, NULL);
 		} catch (Exception e) {
 			throw new RuntimeException("Failed to create GLFW Window. Got Error: ", e);
 		}
 
-		glfwSetKeyCallback(window, keyHandler.glfwKeyCallback());
+		glfwSetKeyCallback(glfwWindow, keyHandler.glfwKeyCallback());
 
 		this.centerWindow();
 
-		glfwMakeContextCurrent(window);
+		glfwMakeContextCurrent(glfwWindow);
 		glfwSwapInterval(1);
 
-		glfwShowWindow(window);
+		glfwShowWindow(glfwWindow);
 
 		GL.createCapabilities();
 
@@ -66,14 +67,14 @@ public class Window {
 			IntBuffer pWidth = stack.mallocInt(1);
 			IntBuffer pHeight = stack.mallocInt(1);
 
-			glfwGetWindowSize(window, pWidth, pHeight);
+			glfwGetWindowSize(glfwWindow, pWidth, pHeight);
 
 			// Get the current monitor resolution
 			GLFWVidMode vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 			assert vidmode != null;
 
 			glfwSetWindowPos(
-				window,
+					glfwWindow,
 				(vidmode.width() - pWidth.get(0)) / 2,
 				(vidmode.height() - pHeight.get(0)) / 2
 			);
@@ -81,7 +82,7 @@ public class Window {
 	}
 
 	public long getGlfwWindow() {
-		return window;
+		return glfwWindow;
 	}
 
 	public void clear() {
@@ -89,7 +90,7 @@ public class Window {
 	}
 
 	public void update() {
-		glfwSwapBuffers(window);
+		glfwSwapBuffers(glfwWindow);
 	}
 
 	public void pollEvents() {

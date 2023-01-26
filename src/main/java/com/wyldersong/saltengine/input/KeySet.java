@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Optional;
 
 public class KeySet {
-	public class KeyAlias {
+	public static class KeyAlias {
 		public String alias;
 		public int keycode;
 
