@@ -4,6 +4,7 @@ import com.wyldersong.saltengine.graphics.shader.ShaderManager;
 import com.wyldersong.saltengine.graphics.shader.UniformMapper;
 import com.wyldersong.saltengine.util.RGBA;
 import org.joml.Vector2f;
+import org.joml.Vector4f;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,11 @@ public class Layer {
 	}
 
 	public void draw(int x, int y, Glyph glyph) {
-		cells.get(y).set(x, new Cell(x, y, new RGBA(0, 0, 0, 1), new RGBA(1, 0, 0, 1), glyph));
+		draw(x, y, new RGBA(0, 0, 0), new RGBA(255, 255, 255), glyph);
+	}
+
+	public void draw(int x, int y, RGBA bg, RGBA fg, Glyph glyph) {
+		cells.get(y).set(x, new Cell(x, y, bg, fg, glyph));
 	}
 
 	public void render(ShaderManager shaderManager) {
@@ -44,8 +49,21 @@ public class Layer {
 		for (List<Cell> cell : cells) {
 			for (Cell value : cell) {
 				if (value.isInitialized) {
+					if (value.backgroundColor != null) {
+						UniformMapper.setUniform("backgroundColor", value.backgroundColor.getVector4f(), shaderManager.uniforms);
+					} else {
+						UniformMapper.setUniform("backgroundColor", new Vector4f(0, 0, 0, 255), shaderManager.uniforms);
+					}
+
+					if (value.foregroundColor != null) {
+						UniformMapper.setUniform("foregroundColor", value.foregroundColor.getVector4f(), shaderManager.uniforms);
+					} else {
+						UniformMapper.setUniform("foregroundColor", new Vector4f(255, 255, 255, 255), shaderManager.uniforms);
+					}
+
 					UniformMapper.setUniform("cellOffset", new Vector2f((float) (value.glyph.id % 16) / config.cellSize, (float) (value.glyph.id / 16) / config.cellSize), shaderManager.uniforms);
 					UniformMapper.setUniform("model", value.getModelMatrix(config.cellSize, config.scale), shaderManager.uniforms);
+
 					value.draw();
 				}
 			}

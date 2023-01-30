@@ -40,6 +40,8 @@ public class ShaderManager {
 		UniformMapper.createUniform(programId, "model", uniforms);
 		UniformMapper.createUniform(programId, "sampler", uniforms);
 		UniformMapper.createUniform(programId, "cellOffset", uniforms);
+		UniformMapper.createUniform(programId, "backgroundColor", uniforms);
+		UniformMapper.createUniform(programId, "foregroundColor", uniforms);
 	}
 
 	public CharSequence loadShaderFile(String filepath) {

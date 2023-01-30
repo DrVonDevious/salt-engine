@@ -23,7 +23,7 @@ public class Cell {
 	public RGBA backgroundColor;
 	public RGBA foregroundColor;
 	public Glyph glyph;
-	public float scale = 2.0f;
+	public float scale = 1.0f;
 	public float cellSize = 16.0f;
 	public boolean isInitialized = false;
 
@@ -67,6 +67,12 @@ public class Cell {
 	public Cell(int x, int y, RGBA bg) {
 		position = new Vector2i(x, y);
 		backgroundColor = bg;
+		init();
+	}
+
+	public Cell(int x, int y, Glyph glyph) {
+		position = new Vector2i(x, y);
+		this.glyph = glyph;
 		init();
 	}
 
