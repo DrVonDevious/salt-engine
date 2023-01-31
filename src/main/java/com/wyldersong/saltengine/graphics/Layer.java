@@ -1,8 +1,9 @@
 package com.wyldersong.saltengine.graphics;
 
+import com.wyldersong.saltengine.Entity;
+import com.wyldersong.saltengine.components.CellComponent;
 import com.wyldersong.saltengine.graphics.shader.ShaderManager;
 import com.wyldersong.saltengine.graphics.shader.UniformMapper;
-import com.wyldersong.saltengine.util.RGBA;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 
@@ -15,56 +16,64 @@ import static org.lwjgl.opengl.GL13.glActiveTexture;
 public class Layer {
 	public LayerConfig config;
 	public Tileset tileset;
-	public List<List<Cell>> cells;
+	public List<Entity> entities;
 
 	public Layer() {
 		tileset = new Tileset("res/terminal16x16.png");
 		config = new LayerConfig();
-		cells = new ArrayList<>();
-
-		for (int row = 0; row < config.cellRows; row++) {
-			cells.add(new ArrayList<>());
-			for (int col = 0; col < config.cellColumns; col++) {
-				cells.get(row).add(col, new Cell());
-			}
-		}
+		entities = new ArrayList<>();
 	}
 
 	public void init() {
 		tileset.load();
+		initCells();
 	}
 
-	public void draw(int x, int y, Glyph glyph) {
-		draw(x, y, new RGBA(0, 0, 0), new RGBA(255, 255, 255), glyph);
+	public void initCells() {
+		for (Entity entity: entities) {
+			if (entity.hasComponent(CellComponent.class)) {
+				CellComponent cellComponent = (CellComponent) entity.getComponent(CellComponent.class);
+				Cell cell = cellComponent.cell;
+
+				if (!cell.isEmpty()) cell.init();
+			}
+		}
 	}
 
-	public void draw(int x, int y, RGBA bg, RGBA fg, Glyph glyph) {
-		cells.get(y).set(x, new Cell(x, y, bg, fg, glyph));
+	public void addEntity(Entity entity) {
+		entities.add(entity);
+	}
+
+	public void removeEntity(Entity entity) {
+		entities.remove(entity);
 	}
 
 	public void render(ShaderManager shaderManager) {
 		glActiveTexture(GL_TEXTURE0);
 		tileset.bind();
 
-		for (List<Cell> cell : cells) {
-			for (Cell value : cell) {
-				if (value.isInitialized) {
-					if (value.backgroundColor != null) {
-						UniformMapper.setUniform("backgroundColor", value.backgroundColor.getVector4f(), shaderManager.uniforms);
+		for (Entity entity: entities) {
+			if (entity.hasComponent(CellComponent.class)) {
+				CellComponent cellComponent = (CellComponent) entity.getComponent(CellComponent.class);
+				Cell cell = cellComponent.cell;
+
+				if (cell.isInitialized) {
+					if (cell.backgroundColor != null) {
+						UniformMapper.setUniform("backgroundColor", cell.backgroundColor.getVector4f(), shaderManager.uniforms);
 					} else {
 						UniformMapper.setUniform("backgroundColor", new Vector4f(0, 0, 0, 255), shaderManager.uniforms);
 					}
 
-					if (value.foregroundColor != null) {
-						UniformMapper.setUniform("foregroundColor", value.foregroundColor.getVector4f(), shaderManager.uniforms);
+					if (cell.foregroundColor != null) {
+						UniformMapper.setUniform("foregroundColor", cell.foregroundColor.getVector4f(), shaderManager.uniforms);
 					} else {
 						UniformMapper.setUniform("foregroundColor", new Vector4f(255, 255, 255, 255), shaderManager.uniforms);
 					}
 
-					UniformMapper.setUniform("cellOffset", new Vector2f((float) (value.glyph.id % 16) / config.cellSize, (float) (value.glyph.id / 16) / config.cellSize), shaderManager.uniforms);
-					UniformMapper.setUniform("model", value.getModelMatrix(config.cellSize, config.scale), shaderManager.uniforms);
+					UniformMapper.setUniform("cellOffset", new Vector2f((float) (cell.glyph.id % 16) / config.cellSize, (float) (cell.glyph.id / 16) / config.cellSize), shaderManager.uniforms);
+					UniformMapper.setUniform("model", cell.getModelMatrix(config.cellSize, config.scale), shaderManager.uniforms);
 
-					value.draw();
+					cell.draw();
 				}
 			}
 		}

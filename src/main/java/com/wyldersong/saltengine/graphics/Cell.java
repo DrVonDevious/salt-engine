@@ -73,7 +73,6 @@ public class Cell {
 	public Cell(int x, int y, Glyph glyph) {
 		position = new Vector2i(x, y);
 		this.glyph = glyph;
-		init();
 	}
 
 	public Cell(int x, int y, RGBA bg, RGBA fg, Glyph glyph) {
@@ -84,7 +83,8 @@ public class Cell {
 		init();
 	}
 
-	private void init() {
+	public void init() {
+		System.out.println("initializing cell!");
 		isInitialized = true;
 
 		try (MemoryStack stack = MemoryStack.stackPush()) {
@@ -130,6 +130,10 @@ public class Cell {
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 			glBindVertexArray(0);
 		}
+	}
+
+	public boolean isEmpty() {
+		return this.glyph == null;
 	}
 
 	public void draw() {
