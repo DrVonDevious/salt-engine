@@ -1,7 +1,9 @@
 package com.wyldersong.saltengine.examples.examplegame;
 
+import com.wyldersong.saltengine.Component;
 import com.wyldersong.saltengine.Entity;
 import com.wyldersong.saltengine.components.CellComponent;
+import com.wyldersong.saltengine.components.PositionComponent;
 import com.wyldersong.saltengine.game.Game;
 import com.wyldersong.saltengine.game.IGame;
 import com.wyldersong.saltengine.graphics.*;
@@ -21,12 +23,13 @@ public class ExampleGame implements IGame {
 		Layer testLayer = new Layer();
 		testScene.addLayer(testLayer);
 
-		Entity<CellComponent> playerEntity = new Entity<>(new CellComponent(4, 4, new Glyph(2)));
+		Entity<Component> playerEntity = new Entity<>(
+			new CellComponent(new RGBA(0, 0, 0), new RGBA(255, 255, 255), new Glyph(64)),
+			new PositionComponent(4, 4)
+		);
 		testLayer.addEntity(playerEntity);
 
-		game.start(() -> {
-//			testLayer.draw(0, 0, new RGBA(0, 100, 0), new RGBA(0, 255, 0), new Glyph(7));
-		});
+		game.start();
 	}
 
 	@Override

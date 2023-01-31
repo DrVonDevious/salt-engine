@@ -4,15 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73991ba7-0aad-49bb-bed1-2c2d94a6e680" name="Changes" comment="add cell custom color support">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/Component.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/Entity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/components/CellComponent.java" afterDir="false" />
+    <list default="true" id="73991ba7-0aad-49bb-bed1-2c2d94a6e680" name="Changes" comment="add basic position component">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/components/PositionComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/components/CellComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/components/CellComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/examples/examplegame/ExampleGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/examples/examplegame/ExampleGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/game/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/Glyph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/Glyph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/Layer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/Layer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/graphics/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/input/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyldersong/saltengine/input/KeyHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675050174849</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add entity component support for layers">
+      <created>1675141383527</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1675141383527</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -145,6 +154,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="add cell custom color support" />
-    <option name="LAST_COMMIT_MESSAGE" value="add cell custom color support" />
+    <MESSAGE value="add entity component support for layers" />
+    <MESSAGE value="add basic position component" />
+    <option name="LAST_COMMIT_MESSAGE" value="add basic position component" />
   </component>
 </project>

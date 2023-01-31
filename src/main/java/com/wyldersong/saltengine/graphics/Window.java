@@ -25,7 +25,6 @@ public class Window {
 		width = config.width;
 		height = config.height;
 		this.keyHandler = keyHandler;
-		System.out.println(keyHandler);
 	}
 
 	public void init() {
@@ -75,8 +74,8 @@ public class Window {
 
 			glfwSetWindowPos(
 					glfwWindow,
-				(vidmode.width() - pWidth.get(0)) / 2,
-				(vidmode.height() - pHeight.get(0)) / 2
+					(vidmode.width() - pWidth.get(0)) / 2,
+					(vidmode.height() - pHeight.get(0)) / 2
 			);
 		}
 	}

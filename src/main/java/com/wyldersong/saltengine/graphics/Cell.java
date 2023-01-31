@@ -63,28 +63,37 @@ public class Cell {
 		init();
 	}
 
+	public Cell(Glyph glyph) {
+		this.glyph = glyph;
+	}
+
+	public Cell(RGBA bg, RGBA fg, Glyph glyph) {
+		backgroundColor = bg;
+		foregroundColor = fg;
+		this.glyph = glyph;
+	}
+
 	@SuppressWarnings("unused")
 	public Cell(int x, int y, RGBA bg) {
 		position = new Vector2i(x, y);
 		backgroundColor = bg;
-		init();
 	}
 
+	@SuppressWarnings("unused")
 	public Cell(int x, int y, Glyph glyph) {
 		position = new Vector2i(x, y);
 		this.glyph = glyph;
 	}
 
+	@SuppressWarnings("unused")
 	public Cell(int x, int y, RGBA bg, RGBA fg, Glyph glyph) {
 		position = new Vector2i(x, y);
 		backgroundColor = bg;
 		foregroundColor = fg;
 		this.glyph = glyph;
-		init();
 	}
 
 	public void init() {
-		System.out.println("initializing cell!");
 		isInitialized = true;
 
 		try (MemoryStack stack = MemoryStack.stackPush()) {

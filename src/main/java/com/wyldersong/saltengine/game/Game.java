@@ -37,6 +37,10 @@ public class Game {
 		void run();
 	}
 
+	public void start() throws InterruptedException {
+		start(() -> {});
+	}
+
 	public void start(GameRunnable runnable) throws InterruptedException {
 		isRunning = true;
 

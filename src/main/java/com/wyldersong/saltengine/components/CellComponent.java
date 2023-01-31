@@ -12,15 +12,11 @@ public class CellComponent extends Component {
 		this.cell = new Cell();
 	}
 
-	public CellComponent(int x, int y) {
-		this.cell = new Cell(x, y);
+	public CellComponent(Glyph glyph) {
+		this.cell = new Cell(glyph);
 	}
 
-	public CellComponent(int x, int y, Glyph glyph) {
-		this.cell = new Cell(x, y, glyph);
-	}
-
-	public CellComponent(int x, int y, RGBA fg, RGBA bg, Glyph glyph) {
-		this.cell = new Cell(x, y, fg, bg, glyph);
+	public CellComponent(RGBA bg, RGBA fg, Glyph glyph) {
+		this.cell = new Cell(bg, fg, glyph);
 	}
 }

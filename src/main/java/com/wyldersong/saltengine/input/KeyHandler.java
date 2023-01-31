@@ -15,9 +15,9 @@ public class KeyHandler {
 		return new GLFWKeyCallback() {
 			@Override
 			public void invoke(long window, int key, int scancode, int action, int mods) {
-				if (key == keySet.getKey("exit") && action == GLFW_RELEASE) {
-					glfwSetWindowShouldClose(window, true);
-				}
+			if (key == keySet.getKey("exit") && action == GLFW_RELEASE) {
+				glfwSetWindowShouldClose(window, true);
+			}
 			}
 		};
 	}

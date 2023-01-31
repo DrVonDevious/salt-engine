@@ -2,9 +2,11 @@ package com.wyldersong.saltengine.graphics;
 
 import com.wyldersong.saltengine.Entity;
 import com.wyldersong.saltengine.components.CellComponent;
+import com.wyldersong.saltengine.components.PositionComponent;
 import com.wyldersong.saltengine.graphics.shader.ShaderManager;
 import com.wyldersong.saltengine.graphics.shader.UniformMapper;
 import org.joml.Vector2f;
+import org.joml.Vector2i;
 import org.joml.Vector4f;
 
 import java.util.ArrayList;
@@ -53,9 +55,12 @@ public class Layer {
 		tileset.bind();
 
 		for (Entity entity: entities) {
-			if (entity.hasComponent(CellComponent.class)) {
+			if (entity.hasComponent(CellComponent.class) && entity.hasComponent(PositionComponent.class)) {
 				CellComponent cellComponent = (CellComponent) entity.getComponent(CellComponent.class);
+				PositionComponent position = (PositionComponent) entity.getComponent(PositionComponent.class);
+
 				Cell cell = cellComponent.cell;
+				cell.position = new Vector2i(position.x, position.y);
 
 				if (cell.isInitialized) {
 					if (cell.backgroundColor != null) {
