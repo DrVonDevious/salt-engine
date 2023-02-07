@@ -95,4 +95,8 @@ public class Window {
 	public void pollEvents() {
 		glfwPollEvents();
 	}
+
+	public void close() {
+		glfwSetWindowShouldClose(glfwWindow, true);
+	}
 }

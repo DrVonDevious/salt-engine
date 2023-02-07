@@ -11,29 +11,48 @@ import com.wyldersong.saltengine.input.KeySet;
 import com.wyldersong.saltengine.util.RGBA;
 
 public class ExampleGame implements IGame {
+	Game game;
+	Entity<Component> player;
+
 	public void run() throws InterruptedException {
 		KeySet keySet = new KeySet();
 		WindowConfig windowConfig = new WindowConfig();
 
-		Game game = new Game(windowConfig, keySet, this);
+		game = new Game(windowConfig, keySet, this);
 
 		Scene testScene = new Scene();
+		testScene.attachSystem(new MovementSystem());
 		game.setScene(testScene);
 
 		Layer testLayer = new Layer();
 		testScene.addLayer(testLayer);
 
-		Entity<Component> playerEntity = new Entity<>(
+		player = new Entity<>(
 			new CellComponent(new RGBA(0, 0, 0), new RGBA(255, 255, 255), new Glyph(64)),
 			new PositionComponent(4, 4)
 		);
-		testLayer.addEntity(playerEntity);
+		testLayer.addEntity(player);
 
 		game.start();
 	}
 
 	@Override
 	public void update(float deltaTime) {
+		PositionComponent position = (PositionComponent) player.getComponent(PositionComponent.class);
+
+		if (game.keyHandler.isKeyPressed("up")) {
+			position.y--;
+		} else if (game.keyHandler.isKeyPressed("down")) {
+			position.y++;
+		} else if (game.keyHandler.isKeyPressed("left")) {
+			position.x--;
+		} else if (game.keyHandler.isKeyPressed("right")) {
+			position.x++;
+		}
+
+		if (game.keyHandler.isKeyPressed("exit")) {
+			game.exit();
+		}
 	}
 
 	@Override

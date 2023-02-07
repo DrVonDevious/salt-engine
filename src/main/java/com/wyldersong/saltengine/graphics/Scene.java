@@ -1,5 +1,6 @@
 package com.wyldersong.saltengine.graphics;
 
+import com.wyldersong.saltengine.EntitySystem;
 import com.wyldersong.saltengine.graphics.shader.Shader;
 import com.wyldersong.saltengine.graphics.shader.ShaderManager;
 import com.wyldersong.saltengine.graphics.shader.UniformMapper;
@@ -13,7 +14,7 @@ import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
-public class Scene {
+public class Scene <T extends EntitySystem> {
 	private List<Layer> layers;
 	private ShaderManager shaderManager;
 
@@ -22,9 +23,11 @@ public class Scene {
 	private int vbo;
 
 	public Camera camera;
+	public List<T> attachedSystems;
 
 	public Scene() {
 		layers = new ArrayList<>();
+		attachedSystems = new ArrayList<>();
 		camera = new Camera(0, 0);
 	}
 
@@ -63,6 +66,16 @@ public class Scene {
 
 	public void addLayer(Layer layer) {
 		layers.add(layer);
+	}
+
+	public void attachSystem(T system) {
+		attachedSystems.add(system);
+	}
+
+	public void update() {
+		for (EntitySystem system : attachedSystems) {
+			system.update();
+		}
 	}
 
 	public void render() {

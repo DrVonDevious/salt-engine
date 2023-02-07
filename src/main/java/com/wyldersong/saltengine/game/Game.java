@@ -72,6 +72,7 @@ public class Game {
 		}
 
 		cleanup();
+		window.close();
 	}
 
 	public void setScene(Scene scene) {
@@ -85,13 +86,13 @@ public class Game {
 		gameLogic.render();
 
 		window.update();
+		activeScene.update();
 
 		tickHandler.updateFPS();
 	}
 
 	public void cleanup() { /* TODO document why this method is empty */ }
 
-	@SuppressWarnings("unused")
 	public void exit() {
 		isRunning = false;
 	}
