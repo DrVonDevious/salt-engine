@@ -69,12 +69,14 @@ public class Scene <T extends EntitySystem> {
 	}
 
 	public void attachSystem(T system) {
+		system.layers = layers;
 		attachedSystems.add(system);
+		system.addedToScene();
 	}
 
 	public void update() {
 		for (EntitySystem system : attachedSystems) {
-			system.update();
+			system.processEntities(layers);
 		}
 	}
 

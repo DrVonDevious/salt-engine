@@ -4,6 +4,7 @@ import com.wyldersong.saltengine.Component;
 import com.wyldersong.saltengine.Entity;
 import com.wyldersong.saltengine.components.CellComponent;
 import com.wyldersong.saltengine.components.PositionComponent;
+import com.wyldersong.saltengine.components.VelocityComponent;
 import com.wyldersong.saltengine.game.Game;
 import com.wyldersong.saltengine.game.IGame;
 import com.wyldersong.saltengine.graphics.*;
@@ -21,16 +22,19 @@ public class ExampleGame implements IGame {
 		game = new Game(windowConfig, keySet, this);
 
 		Scene testScene = new Scene();
-		testScene.attachSystem(new MovementSystem());
 		game.setScene(testScene);
 
 		Layer testLayer = new Layer();
 		testScene.addLayer(testLayer);
 
+		testScene.attachSystem(new MovementSystem());
+
 		player = new Entity<>(
 			new CellComponent(new RGBA(0, 0, 0), new RGBA(255, 255, 255), new Glyph(64)),
-			new PositionComponent(4, 4)
+			new PositionComponent(4, 4),
+			new VelocityComponent()
 		);
+
 		testLayer.addEntity(player);
 
 		game.start();
@@ -38,16 +42,16 @@ public class ExampleGame implements IGame {
 
 	@Override
 	public void update(float deltaTime) {
-		PositionComponent position = (PositionComponent) player.getComponent(PositionComponent.class);
+		VelocityComponent velocity = (VelocityComponent) player.getComponent(VelocityComponent.class);
 
 		if (game.keyHandler.isKeyPressed("up")) {
-			position.y--;
+			velocity.deltaY--;
 		} else if (game.keyHandler.isKeyPressed("down")) {
-			position.y++;
+			velocity.deltaY++;
 		} else if (game.keyHandler.isKeyPressed("left")) {
-			position.x--;
+			velocity.deltaX--;
 		} else if (game.keyHandler.isKeyPressed("right")) {
-			position.x++;
+			velocity.deltaX++;
 		}
 
 		if (game.keyHandler.isKeyPressed("exit")) {
