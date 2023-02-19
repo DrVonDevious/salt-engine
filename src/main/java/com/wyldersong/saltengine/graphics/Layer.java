@@ -26,6 +26,12 @@ public class Layer {
 		entities = new ArrayList<>();
 	}
 
+	public Layer(int width, int height) {
+		tileset = new Tileset("res/terminal16x16.png");
+		config = new LayerConfig(width, height);
+		entities = new ArrayList<>();
+	}
+
 	public void init() {
 		tileset.load();
 		initCells();
@@ -59,6 +65,10 @@ public class Layer {
 				CellComponent cellComponent = (CellComponent) entity.getComponent(CellComponent.class);
 				PositionComponent position = (PositionComponent) entity.getComponent(PositionComponent.class);
 
+				if (position.x > config.cellColumns || position.x < 0 || position.y > config.cellRows || position.y < 0) {
+					return;
+				}
+
 				Cell cell = cellComponent.cell;
 				cell.position = new Vector2i(position.x, position.y);
 
@@ -82,5 +92,13 @@ public class Layer {
 				}
 			}
 		}
+	}
+
+	public int getWidth() {
+		return config.cellColumns;
+	}
+
+	public int getHeight() {
+		return config.cellRows;
 	}
 }

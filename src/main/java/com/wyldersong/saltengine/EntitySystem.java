@@ -10,19 +10,7 @@ public class EntitySystem {
 	public Entity entity;
 	public List<Class<? extends Component>> componentClasses;
 
-	private List<Entity> entities = new ArrayList<>();
-
 	public void getComponents(Class<? extends Component> ...componentClasses) {
-//		for (Class<? extends Component> componentClass : componentClasses) {
-//			for (Layer layer : layers) {
-//				for (Entity entity : layer.entities) {
-//					if (entity.hasComponent(componentClass)) {
-//						System.out.println("found entity!");
-//						entities.add(entity);
-//					}
-//				}
-//			}
-//		}
 		this.componentClasses = new ArrayList<>(List.of(componentClasses));
 	}
 
@@ -33,9 +21,21 @@ public class EntitySystem {
 	public void processEntities(List<Layer> layers) {
 		for (Layer layer : layers) {
 			for (Entity entity : layer.entities) {
-				this.entity = entity;
-				update();
+				if (entity.hasComponents(componentClasses)) {
+					this.entity = entity;
+					update();
+				}
 			}
 		}
+	}
+
+	public List<Entity> getEntities() {
+		List<Entity> entities = new ArrayList<>();
+
+		for (Layer layer : layers) {
+			entities.addAll(layer.entities);
+		}
+
+		return entities;
 	}
 }

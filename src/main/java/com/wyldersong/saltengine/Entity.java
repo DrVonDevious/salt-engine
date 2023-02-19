@@ -36,6 +36,16 @@ public class Entity <T extends Component> {
 		return foundComponent.isPresent();
 	}
 
+	public boolean hasComponents(List<Class<? extends Component>> componentClasses) {
+		for (Class<? extends Component> componentClass : componentClasses) {
+			if (!hasComponent(componentClass)) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 	public T getComponent(Class<? extends Component> componentClass) {
 		Optional<T> foundComponent = components.stream()
 				.filter(component -> component.getClass() == componentClass)

@@ -9,6 +9,7 @@ public class WindowConfig {
 	public RGBA clearColor = new RGBA(0, 0, 0, 1);
 	public boolean isVsyncEnabled = true;
 	public int targetFPS = 60;
+	public int targetUPS = 8;
 
 	public WindowConfig() {}
 

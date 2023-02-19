@@ -53,16 +53,26 @@ public class Game {
 		runnable.run();
 
 		float deltaTime;
+		float accumulator = 0f;
+		float interval = 1f / config.window.targetUPS;
+		float alpha;
 
 		while (isRunning && !glfwWindowShouldClose(window.getGlfwWindow())) {
 			deltaTime = tickHandler.deltaTime();
+			accumulator += deltaTime;
 
 			window.pollEvents();
 
-			gameLogic.update(deltaTime);
-			tickHandler.updateUPS();
+			while (accumulator >= interval) {
+				gameLogic.update(deltaTime);
+				tickHandler.updateUPS();
+				accumulator -= interval;
+			}
 
-			render();
+			alpha = accumulator / interval;
+
+			render(alpha);
+			tickHandler.updateFPS();
 
 			tickHandler.tick();
 
@@ -79,7 +89,7 @@ public class Game {
 		activeScene = scene;
 	}
 
-	public void render() {
+	public void render(float alpha) {
 		window.clear();
 
 		activeScene.render();

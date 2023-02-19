@@ -61,9 +61,11 @@ public class TickHandler {
 	public void sync(int fps) throws InterruptedException {
 		double lastTick = lastTickTime;
 		double currentTime = getCurrentTime();
-		float targetTime = 1f / fps;
+		float targetTime = 1f / (fps / 2f);
 
 		while (currentTime - lastTick < targetTime) {
+			Thread.yield();
+
 			try {
 				Thread.sleep(1);
 			} catch (InterruptedException e) {

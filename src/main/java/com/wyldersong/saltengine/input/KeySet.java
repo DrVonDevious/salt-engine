@@ -21,7 +21,7 @@ public class KeySet {
 
 	public KeySet() {
 		keys = new KeyAlias[] {
-				new KeyAlias("exit", 256),
+				new KeyAlias("escape", 256),
 				new KeyAlias("up", 87),
 				new KeyAlias("down", 83),
 				new KeyAlias("left", 65),
